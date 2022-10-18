@@ -1,0 +1,472 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Binarchallenge chapter 8",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9090"
+    }
+  ],
+  "paths": {
+    "/api/players": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "Rayvan"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "Rayvan@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": 123456,
+                    "format": "password"
+                  },
+                  "exp": {
+                    "type": "integer",
+                    "example": 2000
+                  },
+                  "experience": {
+                    "type": "integer",
+                    "example": 2000
+                  },
+                  "lvl": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "2022-10-10T13:34:27.169Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "2022-10-10T13:34:27.169Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creating New Player",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 5
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "Rayvan"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "Rayvan@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": 123456,
+                      "format": "password"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 2000
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-10-10T13:34:27.169Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-10-10T13:34:27.169Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Some error occurred while creating the Player.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Some error occurred while creating the Player."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "in": "query",
+          "name": "name",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "query",
+          "name": "username",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "query",
+          "name": "email",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "query",
+          "name": "experience",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "query",
+          "name": "lvl",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Get All Player",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 5
+                      },
+                      "username": {
+                        "type": "string",
+                        "example": "Rayvan"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "Rayvan@gmail.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": 123456,
+                        "format": "password"
+                      },
+                      "experience": {
+                        "type": "integer",
+                        "example": 2000
+                      },
+                      "lvl": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2022-10-10T13:34:27.169Z"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2022-10-10T13:34:27.169Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/players/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id of the player",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "Rayvan"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "Rayvan@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": 123456,
+                    "format": "password"
+                  },
+                  "exp": {
+                    "type": "integer",
+                    "example": 4000
+                  },
+                  "experience": {
+                    "type": "integer",
+                    "example": 4000
+                  },
+                  "lvl": {
+                    "type": "integer",
+                    "example": 4
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "2022-10-10T13:34:27.169Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "2022-10-10T13:34:27.169Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Creating New Player",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 5
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "Rayvan"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "Rayvan@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": 123456,
+                      "format": "password"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 4000
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 4
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-10-10T13:34:27.169Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-10-10T13:34:27.169Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Cannot update Player with id=5. Maybe Player was not found or req.body is empty!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cannot update Player with id=5. Maybe Player was not found or req.body is empty!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating Player with id=5",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Error updating Player with id=5"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "id of the player",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Player was deleted successfully!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 5
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "Rayvan"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "Rayvan@gmail.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": 123456,
+                      "format": "password"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 4000
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 4
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": "2022-10-10T13:34:27.169Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "example": "2022-10-10T13:34:27.169Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Cannot delete Player with id=5. Maybe Player was not found!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Cannot delete Player with id=5. Maybe Player was not found!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Could not delete Player with id=5",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "example": "Failed"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Could not delete Player with id=5"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
